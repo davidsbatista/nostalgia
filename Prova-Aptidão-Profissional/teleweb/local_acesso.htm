@@ -1,0 +1,175 @@
+<html>
+
+<head>
+<script Language="JavaScript">
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+//-->
+</script>
+
+<title>DBG - Localização e Acessos</title>
+</head>
+
+<body Background="images/back.jpg" LeftMargin="8" TopMargin="8" onLoad="MM_preloadImages('images/pagina_inicial2.jpg','#927899618210')">
+<div align="center"><center>
+
+<table Border="0" CellSpacing="0" CellPadding="0">
+  <tr>
+    <td Width="733" Height="11" colspan="19"></td>
+  </tr>
+  <tr>
+    <td Width="38" Height="67"></td>
+        <td Width="694" Height="67" ColSpan="17"><img Src="images/local_top.jpg"
+    Border="0" Height="67" Width="694" Name="local_acesso"></td>
+    <td Width="1" Height="67"></td>
+  </tr>
+  <tr>
+    <td Width="733" Height="7" colspan="19"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="18" colspan="3"></td>
+        <td Width="304" Height="289" RowSpan="15"><img src="images/mapa.jpg" width="304" height="289" name="mapa"></td>
+    <td Width="383" Height="18" colspan="15"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="34" colspan="3"></td>
+    <td Width="78" Height="34" colspan="3"></td>
+        <td Width="134" Height="34" ColSpan="3"><img src="images/carris.jpg" width="134" height="34" name="carris"></td>
+    <td Width="171" Height="34" colspan="9"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="20" colspan="3"></td>
+    <td Width="383" Height="20" colspan="15"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="14" colspan="3"></td>
+    <td Width="47" Height="14" colspan="2"></td>
+        <td Width="146" Height="14" ColSpan="3"><img Src="images/benfica.jpg"
+    Border="0" Height="14" Width="146" Name="benfica"></td>
+    <td Width="190" Height="14" colspan="10"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="17" colspan="3"></td>
+    <td Width="383" Height="17" colspan="15"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="9" colspan="3"></td>
+    <td Width="24" Height="9"></td>
+        <td Width="161" Height="14" RowSpan="2" ColSpan="3"><img
+    Src="images/sapadores.jpg" Border="0" Height="14" Width="161"
+    Name="sapadores"></td>
+    <td Width="198" Height="9" colspan="11"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="5" colspan="3"></td>
+    <td Width="24" Height="5"></td>
+        <td Width="165" Height="70" RowSpan="2" ColSpan="9"><img src="images/metro.jpg" width="165" height="70" name="metro"></td>
+    <td Width="33" Height="5" colspan="2"></td>
+  </tr>
+  <tr>
+    <td Width="38" Height="65"></td>
+    <td Width="1" Height="65"></td>
+    <td Width="7" Height="65"></td>
+    <td Width="185" Height="65" colspan="4"></td>
+    <td Width="33" Height="65" colspan="2"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="13" colspan="3"></td>
+    <td Width="383" Height="13" colspan="15"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="12" colspan="3"></td>
+    <td Width="267" Height="12" colspan="9"></td>
+        <td Width="58" Height="12" ColSpan="3"><img Src="images/saldanha.jpg"
+    Border="0" Height="12" Width="58" Name="saldanha"></td>
+    <td Width="58" Height="12" colspan="3"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="10" colspan="3"></td>
+    <td Width="383" Height="10" colspan="15"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="15" colspan="3"></td>
+    <td Width="239" Height="15" colspan="8"></td>
+        <td Width="66" Height="15" ColSpan="3"><img Src="images/cpequeno.jpg"
+    Border="0" Height="15" Width="66" Name="cpequeno"></td>
+    <td Width="78" Height="15" colspan="4"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="13" colspan="3"></td>
+    <td Width="383" Height="13" colspan="15"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="13" colspan="3"></td>
+    <td Width="220" Height="13" colspan="7"></td>
+        <td Width="74" Height="13" ColSpan="3"><img Src="images/ssebastiao.jpg"
+    Border="0" Height="13" Width="74" Name="ssebastiao"></td>
+    <td Width="89" Height="13" colspan="5"></td>
+  </tr>
+  <tr>
+    <td Width="46" Height="31" colspan="3"></td>
+    <td Width="383" Height="31" colspan="15"></td>
+  </tr>
+  <tr>
+    <td Width="733" Height="3" colspan="19"></td>
+  </tr>
+  <tr>
+    <td Width="39" Height="67" colspan="2"></td>
+        <td Width="694" Height="67" ColSpan="17"><a href="index.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.pagina_inicial','document.pagina_inicial','images/pagina_inicial2.jpg','#927899618210')"><img name="pagina_inicial" border="0" src="images/pagina_inicial1.jpg" width="694" height="67" alt="p&aacute;gina incial"></a></td>
+  </tr>
+  <tr>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="38" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="1" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="7" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="304" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="24" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="23" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="31" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="107" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="8" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="19" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="8" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="19" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="28" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="27" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="11" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="20" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="25" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="32" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="1" Height="1"></td>
+  </tr>
+</table>
+  </center>
+</div>
+</body>
+</html>

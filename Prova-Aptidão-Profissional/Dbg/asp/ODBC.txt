@@ -1,0 +1,4 @@
+As ASP iram aceder à base de dados via ODBC
+para que o acesso seja sucedido é necessário
+registar a base de dados no ODBC com o nome
+de : "DBG_Clientes"

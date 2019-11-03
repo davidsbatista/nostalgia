@@ -1,0 +1,168 @@
+<Html>
+<Head>
+<Title>DBG - Gabinete de Aplica&ccedil;&otilde;es Inform&aacute;ticas, Lda</Title>
+<Script Language="JavaScript">
+
+isamap = new Object();
+isamap[0] = "_df"
+isamap[1] = "_ov"
+isamap[2] = "_ot"
+isamap[3] = "_dn"
+
+function isimgact(id, act)
+{
+	if(document.images) document.images[id].src = eval( "isimages." + id + isamap[act] + ".src");
+}
+
+if (document.images) { // ensure browser can do rollovers.
+isimages = new Object();
+isimages.index1_df = new Image();
+isimages.index1_df.src = "images/historial.jpg";
+
+isimages.index1_ov = new Image();
+isimages.index1_ov.src = "images/historialOV.jpg";
+
+isimages.index3_df = new Image();
+isimages.index3_df.src = "images/estrutura.jpg";
+
+isimages.index3_ov = new Image();
+isimages.index3_ov.src = "images/estruturaOV.jpg";
+
+isimages.index4_df = new Image();
+isimages.index4_df.src = "images/certificacoes.jpg";
+
+isimages.index4_ov = new Image();
+isimages.index4_ov.src = "images/certificacoesOV.jpg";
+
+isimages.index5_df = new Image();
+isimages.index5_df.src = "images/local_acesso.jpg";
+
+isimages.index5_ov = new Image();
+isimages.index5_ov.src = "images/local_acessoOV.jpg";
+
+isimages.index6_df = new Image();
+isimages.index6_df.src = "images/clientes.jpg";
+
+isimages.index6_ov = new Image();
+isimages.index6_ov.src = "images/clientesOV.jpg";
+
+}
+
+
+</Script>
+</Head>
+<Body Background="images/back.jpg" LeftMargin="8" TopMargin="8">
+<Table Border="0" CellSpacing="0" CellPadding="0" align="center" >
+  <Tr> 
+    <Td Width="724" Height="14" colspan="15"></Td>
+    <Td Width="1" Height="14"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="30" Height="67"></Td>
+    <Td Width="1" Height="67"></Td>
+    <Td Width="694" Height="67" ColSpan="14"><img src="images/top.gif" width="700" height="68"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="724" Height="17" colspan="15"></Td>
+    <Td Width="1" Height="17"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="328" Height="27" colspan="7"></Td>
+    <Td Width="108" Height="27"><a Href="historial.htm" OnMouseOut="isimgact( 'index1',0)"  OnMouseOver="isimgact( 'index1',1)"  ><Img Src="images/historial.jpg" Border="0" Height="27" Width="108" Name="index1" Alt="Historial"></a></Td>
+    <Td Width="288" Height="27" colspan="7"></Td>
+    <Td Width="1" Height="27"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="724" Height="9" colspan="15"></Td>
+    <Td Width="1" Height="9"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="314" Height="46" colspan="6"></Td>
+    <Td Width="127" Height="127" RowSpan="5" ColSpan="3"><Img Src="images/dbganim.gif" Border="0" Height="127" Width="127" Name="index2" Alt=""></Td>
+    <Td Width="283" Height="46" colspan="6"></Td>
+    <Td Width="1" Height="46"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="197" Height="10" colspan="3"></Td>
+    <Td Width="110" Height="50" RowSpan="3" ColSpan="2"><a Href="estrutura.htm" OnMouseOut="isimgact( 'index3',0)"  OnMouseOver="isimgact( 'index3',1)"  ><Img Src="images/estrutura.jpg" Border="0" Height="50" Width="110" Name="index3" Alt="Estrutura Orgânica"></a></Td>
+    <Td Width="7" Height="10"></Td>
+    <Td Width="283" Height="10" colspan="6"></Td>
+    <Td Width="1" Height="10"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="197" Height="30" colspan="3"></Td>
+    <Td Width="7" Height="30"></Td>
+    <Td Width="12" Height="30"></Td>
+    <Td Width="154" Height="30" ColSpan="3"><a Href="certificacoes.htm" OnMouseOut="isimgact( 'index4',0)"  OnMouseOver="isimgact( 'index4',1)"  ><Img Src="images/certificacoes.jpg" Border="0" Height="30" Width="154" Name="index4" Alt="Certificações"></a></Td>
+    <Td Width="117" Height="30" colspan="2"></Td>
+    <Td Width="1" Height="30"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="197" Height="10" colspan="3"></Td>
+    <Td Width="7" Height="10"></Td>
+    <Td Width="283" Height="10" colspan="6"></Td>
+    <Td Width="1" Height="10"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="314" Height="31" colspan="6"></Td>
+    <Td Width="283" Height="31" colspan="6"></Td>
+    <Td Width="1" Height="31"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="725" Height="18" colspan="16"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="301" Height="21" colspan="4"></Td>
+    <Td Width="162" Height="49" RowSpan="3" ColSpan="7"><a Href="local_acesso.htm" OnMouseOut="isimgact( 'index5',0)"  OnMouseOver="isimgact( 'index5',1)"  ><Img Src="images/local_acesso.jpg" Border="0" Height="49" Width="162" Name="index5" Alt="Localização e Acessos"></a></Td>
+    <Td Width="261" Height="21" colspan="4"></Td>
+    <Td Width="1" Height="21"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="301" Height="27" colspan="4"></Td>
+    <Td Width="135" Height="27"></Td>
+    <Td Width="98" Height="27" ColSpan="2"><a Href="asp/login.asp" OnMouseOut="isimgact( 'index6',0)"  OnMouseOver="isimgact( 'index6',1)"  ><Img Src="images/clientes.jpg" Border="0" Height="27" Width="98" Name="index6" Alt="Clientes"></a></Td>
+    <Td Width="28" Height="27"></Td>
+    <Td Width="1" Height="27"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="30" Height="1"></Td>
+    <Td Width="1" Height="1"></Td>
+    <Td Width="166" Height="1"></Td>
+    <Td Width="104" Height="1"></Td>
+    <Td Width="135" Height="1"></Td>
+    <Td Width="9" Height="1"></Td>
+    <Td Width="89" Height="1"></Td>
+    <Td Width="28" Height="1"></Td>
+    <Td Width="1" Height="1"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="725" Height="18" colspan="16"></Td>
+  </Tr>
+  <Tr> 
+    <Td Width="30" Height="67"></Td>
+    <Td Width="694" Height="67" ColSpan="14"><Img Src="images/bottom.jpg" Border="0" Height="67" Width="694" Name="index7" Alt="Av.Visconde Valmor, 69 - 6º 1050 Lisboa Tel. 795 15 52 Fax 795 28 72"></Td>
+    <Td Width="1" Height="67"></Td>
+  </Tr>
+  <Tr> 
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="30" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="1" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="166" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="104" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="6" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="7" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="14" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="108" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="5" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="12" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="10" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="135" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="9" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="89" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="28" Height="1"></Td>
+    <Td><Img Src="file:///C%7C/Paginas%20Web/images/is_single_pixel_gif.gif" Alt="" Width="1" Height="1"></Td>
+  </Tr>
+</Table>
+
+
+</Body>
+</Html>

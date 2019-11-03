@@ -1,0 +1,110 @@
+<html>
+
+<head>
+<script Language="JavaScript">
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+//-->
+</script>
+
+<title>DBG - Estrutura Orgânica</title>
+</head>
+
+<body Background="images/back.jpg" LeftMargin="8" TopMargin="8"
+onLoad="MM_preloadImages('images/pagina_inicial2.jpg','#927901221100')">
+<div align="center"><center>
+
+<table Border="0" CellSpacing="0" CellPadding="0">
+  <tr>
+    <td Width="735" Height="24" colspan="4"></td>
+  </tr>
+  <tr>
+    <td Width="41" Height="67" colspan="2"></td>
+        <td Width="694" Height="67" ColSpan="2"><img Src="images/estrutura_top.jpg"
+    Border="0" Height="67" Width="694" Name="estrutura"></td>
+  </tr>
+  <tr>
+    <td Width="41" Height="265" colspan="2"></td>
+        <td Width="693" Height="265" align="center">&nbsp; 
+          <p align="center"><font
+    face="Verdana, Arial, Helvetica, sans-serif">A DBG encontra-se organizada segundo o
+    organigrama abaixo exposto,</font></p>
+          <p align="center"><img src="images/estrutura_org.jpg" width="538" height="247" name="estrutura_org"></p>
+    <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif">sendo atribuídos a
+    esta estrutura endereços de e-mail que passamos a especificar </font></p>
+    <p align="left"><font face="Verdana"><a href="mailto:admin.dbg@mail.teleweb.pt">admin.dbg@mail.teleweb.pt</a>
+    &nbsp; </font></p>
+    <ul>
+      <li><p align="left"><font face="Verdana">dirigido ao Conselho de Gerência / Director Geral</font></p>
+      </li>
+    </ul>
+    <p align="left"><font face="Verdana"><a href="mailto:admin.dbg@mail.teleweb.pt">formacao.dbg@mail.teleweb.pt</a>
+    &nbsp; </font></p>
+    <ul>
+      <li><p align="left"><font face="Verdana">dirigido ao Departamento de Formação</font></p>
+      </li>
+    </ul>
+    <p align="left"><font face="Verdana"><a href="mailto:admin.dbg@mail.teleweb.pt">desdos.dbg@mail.teleweb.pt</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></p>
+    <ul>
+      <li><p align="left"><font face="Verdana">dirigido ao Departamento Desenvolvimento e
+        Integração para aplicações desenvolvidas em ambiente DOS</font></p>
+      </li>
+    </ul>
+    <p align="left"><a href="mailto:admin.dbg@mail.teleweb.pt"><font face="Verdana">deswin.dbg@mail.teleweb.pt</font></a></p>
+    <ul>
+      <li><p align="left"><font face="Verdana">dirigido ao Departamento Desenvolvimento e
+        Integração para aplicações desenvolvidas em ambiente Windows</font></p>
+      </li>
+    </ul>
+          <p align="left">&nbsp; </p>
+          <p><img src="images/slogan.jpg" width="386" height="27" name="slogan"></p>
+          <p>&nbsp;</p>
+          </td>
+    <td Width="1" Height="265"></td>
+  </tr>
+  <tr>
+    <td Width="40" Height="67"></td>
+        <td Width="694" Height="67" ColSpan="2"><a href="index.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.pagina_inicial','document.pagina_inicial','images/pagina_inicial2.jpg','#927901221100')"><img name="pagina_inicial" border="0" src="images/pagina_inicial1.jpg" width="694" height="67" alt="p&aacute;gina inicial"></a></td>
+    <td Width="1" Height="67"></td>
+  </tr>
+  <tr>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="40" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="1" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="693" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Alt Width="1" Height="1"></td>
+  </tr>
+</table>
+</center></div>
+</body>
+</html>

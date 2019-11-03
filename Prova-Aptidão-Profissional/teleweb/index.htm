@@ -1,0 +1,130 @@
+<html>
+<head>
+<script Language="JavaScript">
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+</script>
+
+<title>DBG - Gabinete de Aplicações Informáticas</title>
+</head>
+
+<body Background="images/back.jpg" LeftMargin="8" TopMargin="8" onLoad="MM_preloadImages('images/historialOV.jpg','#931354003340');MM_preloadImages('images/certificacoesOV.jpg','#931354099300');MM_preloadImages('images/estruturaOV.jpg','#931354131980');MM_preloadImages('images/local_acessoOV.jpg','#931354185910')">
+<div align="center">
+<center>
+
+<table Border="0" CellSpacing="0" CellPadding="0">
+  <tr>
+    <td Width="725" Height="14" colspan="14"></td>
+  </tr>
+  <tr>
+    <td Width="30" Height="67"></td>
+    <td Width="1" Height="67"></td>
+        <td Width="694" Height="67" ColSpan="12"><img src="images/top.gif" width="700" height="68" name="topo_gif_animado"></td>
+  </tr>
+  <tr>
+    <td Width="725" Height="17" colspan="14"></td>
+  </tr>
+  <tr>
+    <td Width="328" Height="27" colspan="7"></td>
+        <td Width="108" Height="27"><a href="historial.htm"><img src="images/historial.jpg" width="108" height="27" name="historial" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.historial','document.historial','images/historialOV.jpg','#931354003340')" border="0"></a></td>
+    <td Width="289" Height="27" colspan="6"></td>
+  </tr>
+  <tr>
+    <td Width="725" Height="9" colspan="14"></td>
+  </tr>
+  <tr>
+    <td Width="314" Height="46" colspan="6"></td>
+        <td Width="127" Height="127" RowSpan="5" ColSpan="3"><img src="images/dbganim.gif" width="127" height="127" name="dbg_logo"></td>
+    <td Width="284" Height="46" colspan="5"></td>
+  </tr>
+  <tr>
+    <td Width="197" Height="10" colspan="3"></td>
+        <td Width="110" Height="50" RowSpan="3" ColSpan="2"><a href="estrutura.htm"><img src="images/estrutura.jpg" width="110" height="50" name="estrutura" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.estrutura','document.estrutura','images/estruturaOV.jpg','#931354131980')" border="0"></a></td>
+    <td Width="7" Height="10"></td>
+    <td Width="284" Height="10" colspan="5"></td>
+  </tr>
+  <tr>
+    <td Width="197" Height="30" colspan="3"></td>
+    <td Width="7" Height="30"></td>
+    <td Width="12" Height="30"></td>
+        <td Width="154" Height="30" ColSpan="2"><a href="certificacoes.htm"><img src="images/certificacoes.jpg" width="154" height="30" name="certificacoes" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.certificacoes','document.certificacoes','images/certificacoesOV.jpg','#931354099300')" border="0"></a></td>
+    <td Width="118" Height="30" colspan="2"></td>
+  </tr>
+  <tr>
+    <td Width="197" Height="10" colspan="3"></td>
+    <td Width="7" Height="10"></td>
+    <td Width="284" Height="10" colspan="5"></td>
+  </tr>
+  <tr>
+    <td Width="314" Height="31" colspan="6"></td>
+    <td Width="284" Height="31" colspan="5"></td>
+  </tr>
+  <tr>
+    <td Width="725" Height="18" colspan="14"></td>
+  </tr>
+  <tr>
+    <td Width="301" Height="49" colspan="4"></td>
+        <td Width="162" Height="49" ColSpan="7"><a href="local_acesso.htm"><img src="images/local_acesso.jpg" width="162" height="49" name="local_acesso" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.local_acesso','document.local_acesso','images/local_acessoOV.jpg','#931354185910')" border="0"></a></td>
+    <td Width="262" Height="49" colspan="3"></td>
+  </tr>
+  <tr>
+    <td Width="725" Height="18" colspan="14"></td>
+  </tr>
+  <tr>
+    <td Width="30" Height="67"></td>
+        <td Width="694" Height="67" ColSpan="12"><img src="images/bottom.jpg" width="694" height="67" name="bottom"></td>
+    <td Width="1" Height="67"></td>
+  </tr>
+  
+  
+    <tr>
+    <td><img Src="is_single_pixel_gif.gif" Width="30" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="1" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="166" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="104" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="6" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="7" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="14" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="108" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="5" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="12" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="10" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="144" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="117" Height="1"></td>
+    <td><img Src="is_single_pixel_gif.gif" Width="1" Height="1"></td>
+  </tr>
+</table>
+</center>
+</div>
+</body>
+</html>
