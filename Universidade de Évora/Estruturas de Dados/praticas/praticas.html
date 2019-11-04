@@ -1,0 +1,407 @@
+<html>
+<head>
+<title>ED - Praticas</title>
+</head>
+<body>
+
+<h1>Sumários das aulas práticas de ED</h1>
+
+Os números dos exercícios referem-se aos exercícios do <a
+href="./#livro">livro</a> seguido na cadeira, salvo indicação em
+contrário.
+
+<h2><a name="aula1">1&ordf; Aula</a></h2> <!-- 2000/10/11 e 2000/10/16 -->
+
+1. Implementar 2 versões do TAD <em>lista</em> de entre as dadas na
+aula teórica (usando o tipo <tt>list</tt> do Caml, <em>arrays</em> ou
+registos <tt>{&nbsp;valor;&nbsp;proximo&nbsp;}</tt>), com as seguintes
+primitivas
+<ul>
+<li>
+<tt>criar</tt> <em>tipo</em> - que devolve uma lista vazia e em que o
+                               argumento será um valor do tipo dos
+			       elementos da lista
+</li>
+<li>
+<tt>vazia</tt> <em>lista</em> - que devolve <tt>true</tt> se e só se a
+                                <em>lista</em> é uma lista vazia
+</li>
+<li>
+<tt>elemento</tt> <em>lista</em> <em>posição</em> - que devolve o
+                                elemento da <em>lista</em> que está na
+                                <em>posição</em> indicada e em que 0 é
+                                a posição do primeiro elemento da
+                                lista
+</li>
+<li>
+<tt>insere</tt> <em>lista</em> <em>elemento</em> - que devolve a lista
+                                resultante de inserir <em>elemento</em>
+				à cabeça da <em>lista</em>
+</li>
+<li>
+<tt>remove</tt> <em>lista</em> <em>posição</em> - que devolve a lista
+                                resultante de remover o elemento na
+				<em>posição</em> indicada da <em>lista</em>
+</li>
+</ul>
+
+2. Implementar, usando só as primitivas apresentadas acima, as
+seguintes funções sobre o TAD <em>lista</em>, caracterizar o melhor e o
+pior caso para cada uma, e indicar as respectivas complexidades
+<ul>
+<li>
+<tt>inverte</tt> <em>lista</em> - que devolve uma lista contendo os
+                                  mesmos elementos que <em>lista</em>
+				  pela ordem inversa
+</li>
+<li>
+<tt>intersecção</tt> <em>lista1</em> <em>lista2</em> - que devolve uma
+                                  lista contendo os elementos comuns a
+                                  <em>lista1</em> e <em>lista2</em>
+                                  (exercício 3.4 do
+				  <a href="./#livro">livro</a>)
+</li>
+<li>
+<tt>união</tt> <em>lista1</em> <em>lista2</em> - que devolve uma lista
+                                   com os elementos que aparecem em
+                                   alguma das listas argumento
+                                   (exercício 3.5)
+</li>
+</ul>
+Nas duas funções anteriores, tanto <em>lista1</em> como
+<em>lista2</em> são listas sem elementos repetidos e ordenadas por
+ordem crescente, e a lista devolvida deverá ter as mesmas
+características.
+
+<h2><a name="aula2">2&ordf; Aula</a></h2> <!-- 2000/10/18 e 2000/10/23 -->
+
+1. Analisar a complexidade temporal da função <tt>inverte</tt>
+(exercício 2. da aula anterior), caracterizar o melhor e o pior casos
+e as respectivas complexidades. Estudar o comportamento da função para
+as várias implementações do TAD <em>lista</em> (usando o tipo
+<tt>list</tt> do Caml, <em>arrays</em> ou registos
+<tt>{&nbsp;valor;&nbsp;proximo&nbsp;}</tt>).
+
+<p>
+
+2. Implementar o TAD <em>stack</em> (ou <em>pilha</em>) com as
+seguintes primitivas
+<ul>
+<li>
+<tt>cria</tt> <em>tipo</em> - que devolve uma pilha vazia e em que o
+                              argumento será um valor do tipo dos
+                              elementos da pilha
+</li>
+<li>
+<tt>vazio</tt> <em>pilha</em> - que devolve <tt>true</tt> se e só se a
+                                <em>pilha</em> está vazia
+</li>
+<li>
+<tt>cheio</tt> <em>pilha</em> - que devolve <tt>true</tt> se e só se a
+                                <em>pilha</em> está cheia
+</li>
+<li>
+<tt>push</tt> <em>pilha</em> <em>elemento</em> - que devolve a pilha
+                                resultante de empilhar <em>elemento</em>
+				no topo de <em>pilha</em>
+</li>
+<li>
+<tt>pop</tt> <em>pilha</em> - que devolve a pilha resultante de
+                              desempilhar um elemento de
+                              <em>pilha</em>
+</li>
+<li>
+<tt>top</tt> <em>pilha</em> - que devolve o elemento no topo da <em>pilha</em>
+</li>
+</ul>
+
+3. Implementar a avaliação de expressões em Notação Polaca Inversa (ou
+Notação Posfixa). A função deverá ter como argumento uma lista com os
+vários elementos da expressão e devolverá o valor (inteiro) calculado.
+
+<p>
+
+Por exemplo, o resultado de avaliar a expressão
+<pre>
+        valor [ "1"; "2"; "+"; "3"; "*"; "5"; "-" ]
+</pre>
+deverá ser 4. (A lista apresentada corresponde à expressão (1+2)&times;3-5.)
+<a href="valor.ml">Uma solução.</a>
+
+<h2><a name="aula3">3&ordf; Aula</a></h2> <!-- 2000/10/25 e 2000/10/30 -->
+
+Implementar o TAD <em>fila com disciplina FIFO</em> (ou
+<em>queue</em>) com listas. A implementação do TAD lista deverá
+basear-se em vectores com gestão de espaço livre, como mostrado na
+aula teórica (esta técnica é designada no <a href="./#livro">livro</a>
+por <em>cursors</em>), e deverá ter as primitivas que forem mais
+apropriadas para minimizar a complexidade das operações da fila.
+
+<p>
+
+As primitivas do TAD fila serão
+<ul>
+<li>
+<tt>cria</tt> <em>tipo</em> - que devolve uma fila vazia e em que o
+                              argumento será um valor do tipo dos
+			      elementos da fila
+</li>
+<li>
+<tt>vazia</tt> <em>fila</em> - que devolve <tt>true</tt> se e só se a
+                               <em>fila</em> está vazia
+</li>
+<li>
+<tt>cheia</tt> <em>fila</em> - que devolve <tt>true</tt> se e só se a
+                               <em>fila</em> está cheia
+</li>
+<li>
+<tt>insere</tt> <em>fila</em> <em>elemento</em> - que devolve a fila
+                                resultante de inserir <em>elemento</em>
+				em <em>fila</em>
+</li>
+<li>
+<tt>remove</tt> <em>fila</em> - que devolve a um par ordenado cujo primeiro
+				elemento é o elemento de <em>fila</em> inserido
+				há mais tempo, e o segundo é a fila resultante
+				de remover esse elemento de <em>fila</em>
+</li>
+</ul>
+
+<h2><a name="aula4">4&ordf; Aula</a></h2> <!-- 2000/11/6 e 2000/11/8 -->
+
+Considerando a <a href="arvore.ml">implementação</a> de árvores
+genéricas dada na aula teórica, implementar as funções seguintes
+<ol>
+<li>
+<tt>nivel</tt> <em>árvore</em> <em>profundidade</em> - que devolve uma
+			      lista com os elementos da <em>árvore</em>
+			      à <em>profundidade</em> indicada
+</li>
+<li>
+<tt>filhos</tt> <em>árvore</em> <em>elemento</em> - que devolve uma
+                                lista com os filhos do nó com valor
+                                <em>elemento</em>
+</li>
+<li>
+<tt>procura_larg</tt> <em>árvore</em> <em>elemento</em> - que devolve
+                               um nó da <em>árvore</em> com valor
+                               <em>elemento</em>, encontrado através
+                               de uma pesquisa em largura (<a
+                               href="procura-larg.ml">Duas
+                               soluções.</a>)
+</li>
+<li>
+<tt>caminho_larg</tt> <em>árvore</em> <em>elemento</em> - que devolve
+                               o caminho mais curto até um nó com
+                               valor <em>elemento</em>
+</li>
+<li>
+<tt>minimo</tt> <em>árvore</em> - que devolve o menor elemento da
+				<em>árvore</em>
+</li>
+</ol>
+
+<h2><a name="aula5">5&ordf; Aula</a></h2> <!-- 2000/11/13 e 2000/11/15 -->
+					 <!-- continuada em 2000/11/20 -->
+
+1. Implementar o TAD <em>árvore binária de pesquisa (abp)</em>, utilizando
+a técnica de gestão do espaço livre (<em>cursors</em>), com as seguintes
+primitivas
+<ul>
+<li>
+<tt>cria</tt> <em>tipo</em> - que devolve uma árvore vazia e em que o
+                              argumento será um valor do tipo dos
+			      elementos da árvore
+</li>
+<li>
+<tt>maior</tt> <em>árvore</em> - que devolve o maior elemento da
+                              <em>árvore</em>
+</li>
+<li>
+<tt>insere</tt> <em>elemento</em> <em>árvore</em>- que devolve a árvore
+                              resultante de inserir <em>elemento</em>
+</li>
+<li>
+<tt>remove</tt> <em>elemento</em> <em>árvore</em> - que devolve a árvore
+                              resultante de remover <em>elemento</em>
+</li>
+</ul>
+
+<p>
+
+2. Implementar a função <tt>contem : 'a -> 'a abp -> bool</tt> que,
+dada uma árvore e um valor, indica se a árvore o contém.
+
+<p>
+
+3. Implementar a função <tt>maior_que : 'a -> 'a abp -> 'a</tt> que,
+dada uma árvore e um valor, devolve o menor elemento da árvore maior
+que o valor (se não existir tal elemento, a função devolve o próprio
+valor).
+
+
+<h2><a name="aula6">6&ordf; Aula</a></h2> <!-- 2000/11/22 e 2000/11/27 -->
+
+1. Considerando pesquisa de elementos sobre listas
+<ul>
+<li>caracterizar o melhor caso</li>
+<li>caracterizar o pior caso</li>
+<li>calcular o número médio de elementos visitados numa pesquisa com
+    sucesso</li>
+<li>calcular o número médio de elementos visitados numa pesquisa sem
+    sucesso</li>
+</ul>
+Determinar a complexidade para cada uma das alíneas anteriores.
+
+<p>
+
+2. Repetir o exercício anterior para listas ordenadas. (Para a
+pesquisa sem sucesso, considerar que a probabilidade de um valor ser
+menor que o o menor elemento da lista é igual à probabilidade de um
+valor estar entre quaisquer dois elementos consecutivos da lista, e é
+igual à probabilidade de um valor ser maior que o maior elemento da
+lista.)
+
+<p>
+
+3. Calcular as alturas máxima e mínima e o número máximo de folhas de
+uma árvore binária de pesquisa com <em>n</em> nós.
+
+<p>
+
+4. Calcular o número máximo de nós de uma árvore binária de altura
+<em>h</em>.
+
+<p>
+
+5. Determinar a complexidade de um percurso prefixo numa árvore
+binária de pesquisa no melhor e no pior casos, e no caso esperado.
+
+<p>
+
+6. Determinar a complexidade de obter o menor elemento de uma árvore
+binária de pesquisa no melhor e no pior casos, e no caso esperado.
+
+
+<h2><a name="aula7">7&ordf; Aula</a></h2> <!-- 2000/11/29 e 2000/12/4 -->
+
+1. Desenhar as árvores resultantes de inserir, numa AVL inicialmente
+vazia, os valores: 5, 23, 58, -10, -30, -25, 8, -3, 13, 0, -1, -27,
+11, 70, 75, 93 e 104. Sempre que for necessário reequilibrar a árvore,
+identificar a rotação a aplicar, e os nós k1, k2 e k3 (quando se
+aplicar).
+
+<p>
+
+2. Implementar as primitivas de criação e inserção de um elemento para o
+TAD <em>AVL</em>, usando a técnica de gestão do espaço livre.
+
+
+<h2><a name="aula8">8&ordf; Aula</a></h2> <!-- 2000/12/6 e 2000/12/11 -->
+
+Implementar as primitivas abaixo para o TAD
+<em>TabelaHashComRehash</em>, usando <em>hash</em> fechado (<em>closed
+hashing</em> ou <em>open addressing</em>) com <em>quadratic
+probing</em> para a resolução de colisões.
+<ul>
+<li>
+<tt>cria</tt> <em>tipo</em> <em>função-de-hash</em> <em>tamanho</em> -
+       cria e devolve uma nova tabela de <em>hash</em> para elementos
+       do tipo de <em>tipo</em>, que usa <em>função-de-hash</em> e com
+       <em>tamanho</em> inicial; <em>função-de-hash</em> terá como
+       primeiro argumento a dimensão da tabela e o seu tipo será
+       <tt>int -> 'a -> int</tt> se <em>tipo</em><tt>: 'a</tt>
+
+</li>
+<li>
+<tt>posicao</tt> <em>tabela</em> <em>elemento</em> - devolve a posição
+       do <em>elemento</em> na <em>tabela</em>, ou -1 se esta não
+       contiver aquele
+</li>
+<li>
+<tt>remove</tt> <em>tabela</em> <em>elemento</em> - remove o
+       <em>elemento</em> da <em>tabela</em> e devolve-a
+</li>
+<li>
+<tt>insere</tt> <em>tabela</em> <em>elemento</em> - insere o
+       <em>elemento</em> na <em>tabela</em>; se a taxa de ocupação da
+       tabela ultrapassar 0.5, faz <em>rehashing</em>; devolve a
+       tabela
+</li>
+</ul>
+
+
+<h2><a name="aula9">9&ordf; Aula</a></h2> <!-- 2000/12/13 e 2001/1/8 -->
+                                         <!-- continuada em 2001/1/3 -->
+
+1. Simular a execução do procedimento <em>buildHeap</em>, apresentando
+os diversos passos, sob a forma de árvore, e o conteúdo final do
+<em>heap</em>, para a sequência de valores 59, 43, 40, 37, 33, 28, 26,
+24, 15, 12, 8 e 3.
+
+<p>
+
+2. Implementar as funções seguintes e analisar a sua complexidade,
+utilizando a <a href="/~ipr/ed/aulas/heap.ml">implementação</a> do
+<em>heap</em> dada na aula teórica.
+<ul>
+<li>
+<tt>incrementa</tt> <em>heap</em> <em>índice</em> <em>valor</em> - adiciona
+                                  um <em>valor</em> positivo ao elemento
+                                  <em>índice</em> do <em>heap</em> e devolve
+                                  o novo <em>heap</em>
+</li>
+<li>
+<tt>remove</tt> <em>heap</em> <em>índice</em> - remove do <em>heap</em> o
+                                  elemento na posição <em>índice</em>
+                                  e devolve o novo <em>heap</em>
+</li>
+<li>
+<tt>k_esimo</tt> <em>vector</em> <em>k</em> - devolve o <em>k</em>-ésimo
+                                  menor elemento do <em>vector</em> (sem o
+                                  ordenar previamente)
+</li>
+</ul>
+
+<p>
+
+3. Propor uma implementação do TAD <em>pilha</em>, com as primitivas do
+exercício 2 da <a href="#aula2">2&ordf; aula</a>, usando um <em>heap</em>.
+
+
+<h2><a name=aula10>10&ordf; Aula</a></h2> <!-- 2001/1/10 e 2001/1/15 -->
+
+1.  Simular o funcionamento do <em>insertion sort</em>, contando as
+comparações e as alterações efectuadas, para a seguinte sequência de
+elementos: 7, 15, 5, 9, 10, 8, 17 e 3.
+
+<p>
+
+2. Repetir o exercício anterior utilizando o <em>Shell sort</em> com
+os incrementos de Shell.
+
+<p>
+
+3. Repetir o exercício anterior com incrementos 5, 3 e 1.
+
+<p>
+
+4. Implementar o <em>insertion sort</em> sobre
+<a href="ldl-livre2.ml">listas duplamente ligadas</a>. Todas as
+alterações efectuadas à lista durante a execução do algoritmo, incidem
+somente sobre as ligações entre os seus elementos e não sobre os seus
+valores.
+
+
+<h2><a name=aula11>11&ordf; Aula</a></h2> <!-- 2001/1/17 e 2001/1/22 -->
+
+1. Implementar o <em>quick sort</em> sobre
+<a href="lista-cauda.ml">listas com cauda</a>, assim como todas as
+primitivas adicionais, sobre listas, julgadas necessárias<a name=fim>.</a>
+
+</body>
+</html>
+
+<!-- Local variables: -->
+<!-- make-backup-files: nil -->
+<!-- End: -->

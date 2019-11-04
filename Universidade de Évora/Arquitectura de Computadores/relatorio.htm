@@ -1,0 +1,307 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Relatório do Trabalho</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<p align="center" size="5"><b><font size="5">Relat&oacute;rio do trabalho pr&aacute;tico 
+  de Arquitectura dos Computadores 2000/2001</font></b></p>
+<hr>
+<br>
+<table width="100%" border="0">
+  <tr> 
+    <td> 
+      <p align="JUSTIFY"><font face="Courier New" size=2>O trabalho proposto para 
+        a cadeira de Arquitectura de Computadores consistia num programa que l&ecirc;-se 
+        valores de notas - entre 0 e 20 - e que imprimisse na consola a frequ&ecirc;ncia 
+        absoluta das notas que foram inseridas, e que apresenta-se a m&eacute;dia 
+        das mesmas notas.</FONT></p>
+      <p align="JUSTIFY"> 
+      <font face="Courier New" size=2> 
+      <p align="JUSTIFY"> </p>
+      </FONT> 
+      <p align="JUSTIFY"><font face="Courier New" size=2>Para fazer este trabalho 
+        utilizamos o simulador de MIPS - PCSpim 1.0 - a correr numa m&aacute;quina 
+        com o Windows 98.</FONT></p>
+      <p align="JUSTIFY"> 
+      <font face="Courier New" size=2> 
+      <p align="JUSTIFY"> </p>
+      </FONT> 
+      <p align="JUSTIFY"><font face="Courier New" size=2>O programa foi dividido 
+        em tr&ecirc;s procedimentos, s&atilde;o os tr&ecirc;s chamados a partir 
+        do procedimento main.</FONT><br>
+        <br>
+        <br>
+        <br>
+      </p>
+      <pre><font face="Courier New" size=2>1 º procedimento - LER_NOTAS
+</font><font face="Courier New" size=2>============================</font></pre>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Este procedimento foi 
+        fornecido pelo professor como base para o trabalho, o que faz &eacute; 
+        ler do teclado valores inteiros atr&aacute;ves de sucessivas syscalls, 
+        seleccionando os que est&atilde;o entre 0 e 20, e guardando-os num array. 
+        De seguida devolve o endere&ccedil;o base desse array no registo $v0. 
+        O &uacute;ltimo valor do array &eacute; -1.<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        </font><font face="Courier New" size="2">2 º procedimento - ORDENA<br>
+        =========================</font></p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Este procedimento tem 
+        como objectivo ordenar o array devolvido por LER_NOTAS. Para fazer isto 
+        utilizamos um algoritmo de ordena&ccedil;&atilde;o j&aacute; conhecido, 
+        BubbleSort. Escolhemos este algoritmo devido &agrave; sua f&aacute;cil 
+        implementa&ccedil;&atilde;o em assembly MIPS. Est&aacute; j&aacute; provado 
+        que este algoritmo torna-se pouco eficiente para um arrays com bastantes 
+        elementos, mas julgamos que neste caso &eacute; aceit&aacute;vel a utiliza&ccedil;&atilde;o 
+        deste algortimo para ordenar o array. A seguir encontra-se o c&oacute;digo 
+        em C do algortimo.</font></p>
+      <font face="Courier New, Courier, mono">
+      <pre>
+for (i=0; i<(n-1); i++) {
+  for (j=0; j>(n-1-i); j++) {
+    if (a[j+1] < a[j]) {
+      tmp = a[j];       
+      a[j] = a[j+1];
+      a[j+1] = tmp;
+  }
+}
+      </pre>
+      </font>
+      <p align="JUSTIFY"><font face="Courier New" size=2>O procedimento come&ccedil;a 
+        por guardar na stack os valores dos registos $s0, $s1 e $ra. </FONT><font face="Courier New" size="2">De 
+        seguida vai calcular o tamanho do array, pois o algoritmo tem como parametro 
+        o array e o tamanho do array, mas apenas o array &eacute; passado ao procedimento. 
+        Depois de ter o tamanho do array no registo $s1, come&ccedil;a a ordenar 
+        o array. Carrega o registo $s0 com o valor -1 e o registo $t0 com o valor 
+        do tamanho do array menos um. De seguida faz o teste de condi&ccedil;&atilde;o 
+        de entrada no primeiro ciclo. Come&ccedil;a por incrementar o registo 
+        $s0, e depois testa: se $to for maior que $s0 </font><font face="Courier New" size="2">entra 
+        para o primeiro ciclo do procedimento sen&atilde;o termina o procedimento. 
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">No primeiro ciclo, 
+        come&ccedil;a por carregar o registo $s1 a zero, o registo $t1 com o valor 
+        de $t0 menos $s0. Depois faz o teste de condi&ccedil;&atilde;o de entrada 
+        no segundo ciclo: se $t1, for maior que $s1 vai para o segundo ciclo, 
+        sen&atilde;o volta a repetir o c&oacute;digo do primeiro ciclo. No segundo 
+        ciclo vai obter o valor de duas posi&ccedil;&otilde;es seguidas no array: 
+        a[i] e a[i+1]. Se a[i] for maior que a[i+1] troca-as, a[i] fica com o 
+        valor de a[i+1] e a[i] fica com o valor de a[i+1]. Depois volta </font><font face="Courier New" size="2">para 
+        a condi&ccedil;&atilde;o de teste de entrada no segundo ciclo. </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Assim sucessivamente 
+        at&eacute; o vector se encontrar completamente ordenado. Quando o vector 
+        estiver ordenado, vai para o final do procedimento, onde volta a repor 
+        os valores dos registos $s0, $s1 $ra, e c&oacute;pia o endere&ccedil;o 
+        base do array, que est&aacute; em $a0, para $v0. O endere&ccedil;o &eacute; 
+        mesmo a diferen&ccedil;a &eacute; que agora o array est&aacute; ordenado. 
+        Faz um jump para o return adress.<br>
+        <br>
+        <br>
+        </font></p>
+      <p><font face="Courier New" size=2><br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">3 º procedimento - 
+        ESTATISTICA<br>
+        ==============================</font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Este procedimento apresenta 
+        alguns dados de estat&iacute;stica sobres as notas que forma introduzidas. 
+        Nomeadamente a frequ&ecirc;ncia absoluta e a m&eacute;dias das notas. 
+        Tem como par&acirc;metro o endere&ccedil;o base de um array ordenado, 
+        que &eacute; passado no registo $a0. O output gerado &eacute; imprimido 
+        na consola.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">O procedimento come&ccedil;a 
+        por p&ocirc;r guardar o valor dos registos $ra, $s0, $s1, $s2, $s3 na 
+        stack, e de seguida carrega esses mesmos registos, excepto o $ra, a zero. 
+        Os registos vao ter as seguintes fun&ccedil;&otilde;es dentro do procedimento 
+        :</font></p>
+      <p><font face="Courier New" size="2">&#9;$s0&#9;- nota que se est&aacute; 
+        a comparar/procurar dentro do array</font></p>
+      <p><font face="Courier New" size="2">&#9;$s1 &#9;- identifica uma posic&atilde;o 
+        no array</font></p>
+      <p><font face="Courier New" size="2">&#9;$s2 &#9;- n&uacute;mero de ocorr&ecirc;ncias 
+        de uma dada nota</font></p>
+      <p><font face="Courier New" size="2">&#9;$s3 &#9;- acumula o total das notas<br>
+        <br>
+        <br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">&Eacute; necess&aacute;rio 
+        guardar o registo $ra na stack pois dentro deste procedimento sao feitos 
+        v&aacute;rios jal - jump and link - e como tal o registo $ra &eacute; 
+        alterado, perdendo-se assim o endere&ccedil;o de retorno para main.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">O controlo do procedimento 
+        &eacute; feito por um ciclo while, enquanto o registo $s0 n&atilde;o tiver 
+        o valor 21 vai correndo o procedimento. L&ecirc; para o registo $t0 o 
+        valor do array na posic&atilde;o identificada por $s1, isto &eacute; feito 
+        utilizando um sub-procedimento de nome GET_A_I.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Este procedimento come&ccedil;a 
+        por p&ocirc;r em $t0 o valor de 4*i, isto &eacute; feito porque o endere&ccedil;amento 
+        na arquitectura MIPS &eacute; feito de 4 em 4 bytes, de seguida soma esse 
+        valor com o valor do endere&ccedil;o base e guarda o resultado em $t0. 
+        Neste momento $t0 tem o endere&ccedil;o exacto do valor que se quer ler, 
+        ent&atilde;o de seguida &eacute; lido para o registo $t0 o valor que est&aacute; 
+        na posi&ccedil;&atilde;o de mem&oacute;ria indicada por $t0. </font><font face="Courier New" size="2">Depois 
+        volta para o endere&ccedil;o de retorno.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Entra num segundo ciclo 
+        do tipo while, em que s&oacute; sai no caso em que a nota que se foi buscar 
+        ao array n&atilde;o &eacute; igual &agrave; nota que se est&aacute; a 
+        comparar/procurar. Caso contr&aacute;rio, se o valor em $t0 for igual 
+        ao valor de $s0, entao incrementa-se o registo $s2, que guarda as ocorr&ecirc;ncias 
+        de uma dada nota, e &eacute; tamb&eacute;m incrementado, o registo $s1. 
+        Depois &eacute; lido para o registo $t0 o pr&oacute;xima nota do </font><font face="Courier New" size="2">array, 
+        isto &eacute; mais uma vez feito atrav&eacute;s do sub-procedimento GET_A_I. 
+        Volta-se ent&atilde;o para o topo do ciclo onde &eacute; feita de novo 
+        a compara&ccedil;&atilde;o, desta vez com uma nova posi&ccedil;&atilde;o 
+        do array.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Quando sai do ciclo 
+        guarda o valor de $a0 no registo $t3. Isto &eacute; feito porque de seguida 
+        v&atilde;o-se fazer as syscalls para imprimir na consola o valor da nota 
+        e da sua ocorr&ecirc;ncia. S&atilde;o feitas ent&atilde;o quatro syscalls, 
+        a primeira imprime o valor da nota, a segunda imprime a string "\t" que 
+        corresponde a um TAB, a terceira imprime o n&uacute;mero de ocorr&ecirc;ncias 
+        da nota, e por fim a quarta syscall imprime a string "\n" que corresponde 
+        a um LINE FEED.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">De seguida &eacute; 
+        feita uma multiplica&ccedil;&atilde;o entre o valor da nota e o n&uacute;mero 
+        de ocorr&ecirc;ncias dessa mesma nota, o produto &eacute; guardado em 
+        $t4. A pr&oacute;xima instru&ccedil;&atilde;o incrementa a $s3 o valor 
+        da multipli&ccedil;&atilde;o anterior. Isto &eacute; feito para no final 
+        do procedimento se calcular a m&eacute;dia das notas.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Depois o registo $s0 
+        &eacute; incrementado em uma unidade, e o registo $s2 &eacute; carregado 
+        a zero. Isto &eacute; para que na pr&oacute;xima itera&ccedil;&atilde;o 
+        se esteja a procurar/comparar uma nota diferente, e como tal as ocorr&ecirc;ncias 
+        passam a zero. Copia o valor do registo $t3 para o registo $a0 e faz um 
+        jump para o topo do ciclo.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Estes passos s&atilde;o 
+        repetidos para todas os valores que o registo $s0 toma, excepto para 21, 
+        como $s0 &eacute; incrementado ao final do ciclo e o teste &eacute; feito 
+        no topo do ciclo, quando o $s0 toma o valor 21 o ciclo termina.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Ap&oacute;s sair do 
+        ciclo vai calcular a m&eacute;dia das notas, como a m&eacute;dia &eacute; 
+        um valor real, os c&aacute;lculos v&atilde;o ter que ser feitos nos registos 
+        do co-processador1. Come&ccedil;a-se ent&atilde;o por copiar a soma de 
+        todas as notas para um registo de "floating-point" e depois converte-se 
+        o valor inteiro num floating-point de "single precision", o mesmo se faz 
+        com o valor do numero total de notas. &Eacute; necess&aacute;rio converter 
+        os valores inteiros para valores em "floating-point" pois o processador 
+        guarda nos </font><font face="Courier New" size="2">seus registos valores 
+        inteiros, e o co-processador1 guarda valores reais. A soma de todas as 
+        notas ficam no registo $f0, e o n&uacute;mero total de notas ficam em 
+        $f1. De seguida calcula-se o quociente desses dois valores e guarda-se 
+        o resultado em $f12.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New" size="2">Depois imprime-se uma 
+        linha em branco na consola, seguida do resultado da divis&atilde;o. Copia-se 
+        o valor de $t2 para o registo $ra e faz-se um jump para o return adress.<br>
+        <br>
+        </font></p>
+      <p><font face="Courier New" size="2">A seguir est&aacute; o pseudo-c&oacute;dgio 
+        do procedimento ESTATISTICA:</font></p>
+      <pre><font face="Courier New, Courier, mono">
+j==0;
+i==0;
+oc==0;
+total_notas==0;
+
+while ( j < 21 ) do {
+	while ( j=a[i] ) do {
+		oc==oc+1;
+		i==i+1;
+		};
+	print "j	oc";
+	total_notas == total_notas + j*oc
+	j==j+1;
+	oc==0;
+	print " total_notas / i ";
+
+
+
+
+<br></font><font face="Courier New, Courier, mono" size="2">Outros detalhes:
+</font><font face="Courier New, Courier, mono" size="2">================</font></pre>
+      <p align="JUSTIFY"><font face="Courier New, Courier, mono" size="2">Foi 
+        ainda criado um procedimento de nome GET_A_I, que &eacute; apenas um sub-procedimento 
+        de ESTATISTICA. Isto foi feito para n&atilde;o repetir c&oacute;digo dentro 
+        do procedimento ESTATISICA. O que GET_A_I faz &eacute; ir buscar ao array, 
+        que tem como endere&ccedil;o base o valor de $a0, o valor da posi&ccedil;&atilde;o 
+        em $s1, e devolver esse valor em $t0.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"><font face="Courier New, Courier, mono" size="2">&Eacute; 
+        exclusivamente utilizado por ESTATISCA da&iacute; nao seguir &agrave; 
+        risca a conven&ccedil;&atilde;o de registos e procedure calls.<br>
+        <br>
+        </font></p>
+      <p align="JUSTIFY"> 
+      <p align="JUSTIFY"> </p>
+      <p align="JUSTIFY"><font face="Courier New, Courier, mono" size="2">Breve 
+        explica&ccedil;&atilde;o do funcionamento do procedimento GET_A_I:</font></p>
+      <pre><font face="Courier New, Courier, mono">
+      add $t0, $s1, $s1		#$t0 fica com o valor de $s1*2
+      add $t0, $t0, $t0		#$t0 fica com o valor de $s1*4
+      add $t0, $a0, $t0		#$t0 fica com o endereço de a[i]
+      lw $t0, 0($t0)	    	#$t0 fica com o valor de a[i]
+      jr $ra		        #salta para o endereço de retorno</font>
+      </pre>
+    </td>
+  </tr>
+</table>
+<hr>
+<p><font size="3" face="Courier New, Courier, mono">Trabalho realizado por:</font></p>
+<p><font face="Courier New, Courier, mono">David Batista:<br>
+  15210@alunos.uevora.pt<br>
+  http://www.alunos.uevora.pt/~l15210 </font></p>
+<p><font face="Courier New, Courier, mono">Tiago Bilou:<br>
+  l15243@alunos.uevora.pt<br>
+  http://www.alunos.uevora.pt/~l15243 </font></p>
+</BODY>
+</HTML>

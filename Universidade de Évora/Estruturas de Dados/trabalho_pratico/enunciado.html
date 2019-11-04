@@ -1,0 +1,395 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta6 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Trabalho de ED</TITLE>
+<META NAME="description" CONTENT="Trabalho de ED">
+<META NAME="keywords" CONTENT="trabalho">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta6">
+
+</HEAD>
+
+<BODY >
+
+<P>
+<H1 ALIGN="CENTER">Estruturas de Dados
+<BR>
+Enunciado do Trabalho Prático</H1>
+<P ALIGN="CENTER"><STRONG>Licenciatura em Engenharia Informática
+<BR>
+Universidade de Évora</STRONG></P>
+<P ALIGN="CENTER"><STRONG>2000/2001</STRONG></P>
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000">
+Preâmbulo</A>
+</H1>
+
+<P>
+O trabalho de Estruturas de Dados constitui a componente prática da
+avaliação da cadeira e tem um peso de 5 valores na nota final.
+
+<P>
+O trabalho deverá ser feito em grupos de dois ou três alunos. Os
+grupos com dois elementos efectuarão somente o trabalho correspondente
+à 1&ordf; parte do enunciado, enquanto que os com três elementos
+realizarão o trabalho correspondente às 1&ordf; e 2&ordf; partes do
+enunciado.
+
+<P>
+A componente de implementação do trabalho será realizada em <A
+HREF="http://pauillac.inria.fr/caml/">Caml Light</A>,usando somente as
+funções e tipos disponíveis na <A
+HREF="http://pauillac.inria.fr/caml/man-caml/node14.html"><I>core
+library</I></A>.
+<P>
+
+<H2><A NAME="SECTION00011000000000000000">
+Entrega dos trabalhos</A>
+</H2>
+
+<P>
+Deverão ser entregues todos os ficheiros fonte do programa, a sua
+listagem e um relatório que descreva e justifique as estruturas de
+dados utilizadas, e que analise a complexidade temporal das operações
+implementadas. O relatório poderá ser entregue em papel ou em
+ficheiro, caso em que deverá estar num ficheiro de texto, em texto
+simples ou em HTML.
+
+<P>
+O limite para a entrega dos trabalhos são as 19 horas do dia 23 de
+Janeiro de 2001. Os vários ficheiros poderão ser enviados para
+<TT>vp @ di.uevora.pt</TT> (método preferido) ou entregues em disquete.
+
+<P>
+
+<H1><A NAME="SECTION00020000000000000000">
+Enunciado do trabalho</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+Introdução</A>
+</H2>
+
+<P>
+Nos últimos anos, viu-se aumentar de forma significativa a quantidade
+de informação disponível digitalmente. Tanta informação perde toda a
+sua utilidade se não for possível, em tempo útil, identificar onde se
+poderá encontrar o que se procura. Daí advém a necessidade de
+ferramentas que a permitam pesquisar rápida e eficientemente.
+
+<P>
+Um dos campos onde se faz sentir essa necessidade é o da pesquisa de
+informação em textos, como qualquer pessoa que já tenha tentado
+encontrar algo na <I>World Wide Web</I> se terá apercebido.
+
+<P>
+
+<H2><A NAME="SECTION00022000000000000000">
+1&ordf; Parte</A>
+</H2>
+
+<P>
+Pretende-se criar um programa que, dado um texto, permita obter o mais
+eficientemente possível informação sobre o seu conteúdo. Para que esse
+programa possa ser incluído num sistema maior, a sua interface deve
+obedecer rigidamente à especificação apresentada a seguir.
+
+<P>
+No âmbito deste trabalho, considera-se que uma palavra é uma sequência
+não vazia de letras, acentuadas ou não, e que não há qualquer
+diferença entre as versões maiúscula e minúscula de uma letra.
+Uma palavra pode ainda conter um ou mais hífens, mas um hífen só
+pertence a uma palavra quando o carácter anterior e o carácter
+seguinte são letras. Todos os outros caracteres serão considerados
+como separadores de palavras. O texto a tratar terá, no máximo, 5000
+palavras, entre as quais não haverá mais de 1000 palavras distintas.
+
+<P>
+O programa deverá possuir as seguintes funções, com os argumentos e
+resultados indicados.
+
+<UL>
+<LI><TT>indexa</TT> <I>nome-do-ficheiro</I> - esta função recebe como
+  argumento uma <I>string</I> com o nome do ficheiro que contém o
+  texto, e constrói e devolve a estrutura de dados que será utilizada
+  para as pesquisas.
+
+<P>
+No remanescente do texto, o valor devolvido por <TT>indexa</TT>, será
+  referido como <I>índice</I>.
+
+<P>
+</LI>
+<LI><TT>ocorre</TT> <I>índice</I> <I>palavra</I> - indica se a
+  palavra (uma <I>string</I>) ocorre no texto.
+
+<P>
+</LI>
+<LI><TT>primeira_ocorrencia</TT> <I>índice</I> <I>palavra</I> -
+  devolve o número da linha em que a palavra ocorre pela primeira vez.
+
+<P>
+</LI>
+<LI><TT>ultima_ocorrencia</TT> <I>índice</I> <I>palavra</I> -
+  devolve o número da linha em que a palavra ocorre pela última vez.
+
+<P>
+As duas funções anteriores devolverão -1 se a palavra não ocorre
+  no texto.
+
+<P>
+</LI>
+<LI><TT>ocorrencias</TT> <I>índice</I> <I>palavra</I> - devolve uma
+  lista ordenada com o número das linhas onde a palavra ocorre no
+  texto. O número de uma linha aparecerá na lista tantas vezes quantas
+  as ocorrências da palavra nessa linha.
+
+<P>
+</LI>
+<LI><TT>quantas_ocorrencias</TT> <I>índice</I> <I>palavra</I> -
+  devolve o número de vezes que a palavra ocorre no texto.
+
+<P>
+</LI>
+<LI><TT>quantas_palavras</TT> <I>índice</I> - devolve o número de
+  palavras do texto.
+
+<P>
+</LI>
+<LI><TT>quantas_palavras_distintas</TT> <I>índice</I> - devolve
+  o número de palavras distintas do texto.
+
+<P>
+</LI>
+<LI><TT>mais_frequente</TT> <I>índice</I> - devolve (um)a palavra
+  com maior número de ocorrências.
+</LI>
+</UL>
+
+<P>
+
+<H2><A NAME="SECTION00023000000000000000">
+2&ordf; Parte</A>
+</H2>
+
+<P>
+Às vezes, quer-se localizar, não uma palavra individual, mas uma
+expressão. Para efeitos deste trabalho, uma expressão é uma sequência
+de uma ou mais palavras, e ocorre no texto se as palavras que a
+constituem lá ocorrem, pela mesma ordem e sem outras palavras no meio
+(uma expressão pode, no entanto, não estar toda numa só linha, ou
+mesmo numa só frase). Considera-se, também, que a linha onde a
+expressão ocorre é a linha em que aparece a sua primeira palavra.
+
+<P>
+Para esta parte do trabalho, deverão existir as funções seguintes.
+
+<UL>
+<LI><TT>ocorre_expressao</TT> <I>índice</I> <I>expressão</I> -
+  indica se a expressão, representada por uma lista não vazia de
+  palavras, ocorre no texto.
+
+<P>
+</LI>
+<LI><TT>primeira_ocorrencia_expressao</TT> <I>índice</I>
+  <I>expressão</I> - devolve o número da linha em que a expressão
+  ocorre pela primeira vez.
+
+<P>
+</LI>
+<LI><TT>ultima_ocorrencia_expressao</TT> <I>índice</I>
+  <I>expressão</I> - devolve o número da linha em que a expressão
+  ocorre pela última vez.
+
+<P>
+As duas funções anteriores devolverão -1 se a expressão não ocorre
+  no texto.
+
+<P>
+</LI>
+<LI><TT>ocorrencias_expressao</TT> <I>índice</I> <I>expressão</I>
+  - devolve a lista ordenada dos números das linhas em que a
+  expressão ocorre no texto. O número de uma linha aparecerá na lista
+  tantas vezes quantas as ocorrências da expressão nessa linha.
+</LI>
+</UL>
+
+<P>
+
+<H1><A NAME="SECTION00030000000000000000">
+Exemplos</A>
+</H1>
+
+<P>
+Apresenta-se, seguidamente, alguns exemplos de uso das primitivas
+descritas acima e os valores devolvidos. O texto considerado é
+constituído pelo artigo 60&ordm; da <A
+HREF="http://www.parlamento.pt/leis/index_const.html"> Constituição da
+República Portuguesa</A>,tal como se apresenta abaixo. A variável
+<TT>indice</TT> denota a estrutura devolvida pela função
+<TT>indexa</TT>.
+
+<P>
+<PRE>
+<SMALL>
+                                     Artigo 60.&ordm;
+
+                              (Direitos dos consumidores)
+
+1. Os consumidores têm direito à qualidade dos bens e serviços consumidos, à formação
+e à informação, à protecção da saúde, da segurança e dos seus interesses económicos,
+bem como à reparação de danos.
+
+2. A publicidade é disciplinada por lei, sendo proibidas todas as formas de publicidade
+oculta, indirecta ou dolosa.
+
+3. As associações de consumidores e as cooperativas de consumo têm direito, nos termos
+da lei, ao apoio do Estado e a ser ouvidas sobre as questões que digam respeito à defesa
+dos consumidores, sendo-lhes reconhecida legitimidade processual para defesa dos seus
+associados ou de interesses colectivos ou difusos.
+</SMALL>
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000">
+1&ordf; Parte</A>
+</H2>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<P>
+<DIV ALIGN="CENTER"></DIV>
+<P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING=3 BORDER="0">
+<TR><TD ALIGN="LEFT" COLSPAN=1> Expressão</TD>
+<TD ALIGN="LEFT">&nbsp;</TD><TD ALIGN="LEFT">Valor</TD></TR>
+<TR><TD ALIGN="LEFT"><TT> 
+  
+ocorre indice "difusos"                   </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> true </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+primeira_ocorrencia indice "formação"  </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> 5 </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+primeira_ocorrencia indice "segura"    </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> -1 </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ultima_ocorrencia indice "inFoRMAÇão"  </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> 6 </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias indice "Interesses"           </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [6; 15] </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias indice "Interêsses"           </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [] </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias indice "publicidade"          </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [9; 9] </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias indice "sendo-lhes"           </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [14] </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias indice "sendo"                </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [9] </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias indice "lhes"                 </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [] </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+quantas_ocorrencias indice "de"        </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> 5 </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+quantas_palavras indice                </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> 102 </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+quantas_palavras_distintas indice   </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> 67 </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+mais_frequente indice                  </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> "à"
+</TT></TD>
+</TR>
+</TABLE></DIV>
+<P>
+<DIV ALIGN="CENTER"></DIV>
+
+<P>
+
+<H2><A NAME="SECTION00032000000000000000">
+2&ordf; Parte</A>
+</H2>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<P>
+<DIV ALIGN="CENTER"></DIV>
+<P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING=3 BORDER="0">
+<TR><TD ALIGN="LEFT" COLSPAN=1> Expressão</TD>
+<TD ALIGN="LEFT">&nbsp;</TD><TD ALIGN="LEFT">Valor</TD></TR>
+<TR><TD ALIGN="LEFT"><TT> 
+  
+ocorre_expressao indice ["direito"; "à"; "qualidade"]             </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> true </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorre_expressao indice ["direito"; "qualidade"]                  </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> false </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+primeira_ocorrencia_expressao indice ["PUBLiciDade"; "OCUlta"] </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> 9 </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ultima_ocorrencia_expressao indice ["PUBLiciDade"; "OCULta"]   </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> 9 </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias_expressao indice ["têm"; "DIREITO"]                 </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [5; 12] </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias_expressao indice ["consumidos"; "à"; "formação"]      </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [5] </TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> 
+ocorrencias_expressao indice ["não"; "ocorre"; "aqui"]            </TT></TD>
+<TD ALIGN="LEFT"> -&gt;  </TD><TD ALIGN="LEFT"><TT> [] </TT></TD>
+</TR>
+</TABLE></DIV>
+<P>
+<DIV ALIGN="CENTER"></DIV>
+
+<P>
+B<SMALL>OM </SMALL>T<SMALL>RABALHO.</SMALL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,465 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Relatório do Trabalho</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<p align="center" size="5"><b><font size="5">Relat&oacute;rio do trabalho pr&aacute;tico 
+  de Estruturas de Dados 2000/2001</font></b></p>
+<hr>
+<table width="100%" border="0">
+  <tr> 
+    <td> 
+      <p align="JUSTIFY"><font face="Courier New, Courier, mono" size="2">Introdução:<br>
+        ===========<br>
+        <br>
+        O trabalho prático da cadeira de Estruturas de Dados, consistia na criação 
+        de uma estrutura, adequada para pesquisa de textos. O programa devia pegar 
+        num texto de um ficheiro, copiá-lo para uma estrutura e permiter uma série 
+        de operações sobre essa estrutura:<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        1º Parte - Pesquisa sobre palavras<br>
+        ==================================<br>
+        <br>
+        Considera-se que uma palavra é uma sequência não vazia de letras, acentuadas 
+        ou não, e que não há qualquer diferença entre as versões maiúscula e minúscula 
+        de uma letra. Uma palavra pode ainda conter um ou mais hífens, mas um 
+        hífen só pertence a uma palavra quando o carácter anterior e o carácter 
+        seguinte são letras. Todos os outros caracteres serão considerados como 
+        separadores de palavras. O texto a tratar terá, no máximo, 5000 palavras, 
+        entre as quais não haverá mais de 1000 palavras distintas - indicar se 
+        uma palavra ocorre no texto - devolver o número da linha em que uma palavra 
+        ocorre pela primeira vez - devolver o número da linha em que uma palavra 
+        ocorre pela última vez - devolver uma lista ordenada com o número das 
+        linhas onde uma palavra ocorre no texto - devolver o número de vezes que 
+        uma palavra ocorre no texto - devolver o número de palavras do texto - 
+        devolver o número de palavras distintas do texto - devolver a palavra 
+        com maior número de ocorrências.<br>
+        Foi assumido que um n&uacute;mero n&atilde;o &eacute; uma palavra</font><font face="Courier New, Courier, mono" size="2">, 
+        pois n&atilde;o se trata de trata de uma letra, mas sim de um n&uacute;mero.<br>
+        <br>
+        Surgiu, entre v&aacute;rios problemas encontrados o das palavras que come&ccedil;am 
+        numa linha e continuam noutra. Optamos por assumir que esse caso nunca 
+        se daria uma vez que os computadores, caso a palavra n&atilde;o caiba 
+        na linha, este automaticamente coloca-a na linha de baixo.<br>
+        <br>
+        <br>
+        2ª Parte - Pesquisa sobre expressões<br>
+        ====================================<br>
+        <br>
+        Uma expressão é uma sequência de uma ou mais palavras, e ocorre no texto 
+        se as palavras que a constituem lá ocorrem, pela mesma ordem e sem outras 
+        palavras no meio (uma expressão pode, no entanto, não estar toda numa 
+        só linha, ou mesmo numa só frase). Considera-se, também, que a linha onde 
+        a expressão ocorre é a linha em que aparece a sua primeira palavra. - 
+        indicar se uma expressão, representada por uma lista não vazia de palavras, 
+        ocorre no texto - devolver o número da linha em que a expressão ocorre 
+        pela primeira vez - devolver o número da linha em que a expressão ocorre 
+        pela última vez - devolver a lista ordenada dos números das linhas em 
+        que uma expressão ocorre no texto.<br>
+        <br>
+        <br>
+        Começamos por analisar o que era pedido, e após comparar várias estruturas 
+        de dados chegamos à conclusão que haviam duas que poderiam satisfazer 
+        as necessiadades do programa. As AVL TREES, e as HASH TABLES. A inserção, 
+        remoção e pesquisa nas AVL TREES têm todas a seguinte complexidade: O(log 
+        N). Por outro lado as HASH TABLES têm complexidade constante nas três 
+        operações referidas, para o caso médio. Como o programa têm como objectivo 
+        principal a pesquisa de informação na estrutura, optamos pelas HASH TABLES. 
+        Dentro do tipo de dados abstracto HASH TABLES, existem dois sub-tipos, 
+        as HASH TABLES abertas e as HASH TABLES fechadas. A diferença entre elas 
+        é na forma como lidam com as colisões. Ao fazer uma inserção numa HASH 
+        TABLES aberta, se essa inserção colidir, a forma como o problema é resolvido 
+        é recorrendo a uma segunda estrutura, normalmente listas. O que implica 
+        uma perda de tempo para inserir o elemento na lista e para fazer as ligações 
+        com os restantes elementos da lista. Por outro lado as HASH TABLES fechadas 
+        resolvem o problema doutra maneira. Se houver uma colisão o que se faz 
+        é avanços sucessivos no vector até se encontrar uma posição vazia. Os 
+        avanços podem ser lineares ou quadráticos. Optamos então por utilizar 
+        a HASH TABLE fechada, com avanços lineares. Como os textos onde o programa 
+        ia ser aplicado não tinham mais que 1000 palavras distintas, utilizamos 
+        um vector com 2048 posições. Este número está relacionado com a seguinte 
+        fórmula: <br>
+        <br>
+        <br>
+        Factor de Carga = Nº Elementos / Tamanho da Tabela <br>
+        <br>
+        em que o Factor de Carga tem que ser, para caso da HASH fechada, igual 
+        ou inferior a 0,5.<br>
+        <br>
+        Como tal: <br>
+        <br>
+        0,5 = 1000 / x <br>
+        <br>
+        x = 2000 <br>
+        <br>
+        <br>
+        Arredondamos o 2000 para 2048 pois na função de hash é feita uma divisão 
+        pelo tamanho da tabela, e o processamento de uma divisão por uma potência 
+        de 2 é muito mais rápido que uma divisão por 2000 <br>
+        <br>
+        Criamos um tipo chamado 'a entrada que têm o seguinte aspecto: <br>
+        <br>
+        type 'a entrada = {mutable palavra: 'a; mutable linhas: int list; mutable 
+        ocorrencias: int; mutable ordem: int list};;<br>
+        <br>
+        Cada entrada no vector tem um elemento do tipo 'a entrada. Utilizámos 
+        este tipo pois era necessário guardar informação sobre a palavra e sobre 
+        a linha em que a palavra se encontra. Como uma palavra pode existir em 
+        várias linhas de um texto, utilizamos uma lista para guardar as várias 
+        linhas onde a palavra se encontra. <br>
+        <br>
+        A variável ocorrências serve para guardar o número de ocorrências da palavra 
+        ao longo do texto. Podiamos optar por não utilizar essa variável mas no 
+        caso da pesquisa que tinha que devolver o número de palavras distintas 
+        no texto seria necessário precorrer todas as entradas com elementos obter 
+        o tamanho das listas e soma-las todas. Daí guardarmos o tamanho da lista 
+        na variável ocorrências.<br>
+        <br>
+        Existe ainda uma variável do tipo list chamada ordem, que guarda a ordem 
+        em que a palavra aparece no texto. A primeira palavra a ser retirada do 
+        texto tem como número de ordem um, a segunda tem de n&uacute;mero dois, 
+        e assim sucessivamente. Se houver palavras repetidas os outros números 
+        de ordem são acrescentados à lista.<br>
+        <br>
+        O vector é inicializado com {palavra=""; linhas=[]; ocorrencias=0; ordem 
+        = []};;<br>
+        <br>
+        Construímos as seguintes funções auxiliares:<br>
+        ============================================<br>
+        <br>
+        <b>maiusc : char -> char = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(1) <br>
+        <br>
+        Vê se o caracter que recebe é minúsculo ou maiúsculo, caso seja minúsculo 
+        transforma-o em maiúsculo.<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>caps : string -> string = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(N)<br>
+        <br>
+        Devolve em caracteres maiúsculo a string que recebe.<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>tail : 'a list -> 'a = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(N) <br>
+        <br>
+        Devolve o último elemento de uma lista. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>eh_letra : char -> bool = &lt;fun&gt; </b><fun> </font></p>
+      <p align="JUSTIFY"><font face="Courier New, Courier, mono" size="2">Complexidade: 
+        0(1) </font></p>
+      <p align="JUSTIFY"><font face="Courier New, Courier, mono" size="2">Vê se 
+        o caracter que lhe é passado se encontra dentro dos valores de ASCII que 
+        correspondem a uma letra.<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        Funções da tabela de HASH:<br>
+        ==========================<br>
+        <br>
+        <b>hash : string -> int = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(N)<br>
+        <br>
+        Função de hash que gera a posição para onde vai a palavra. Das funções 
+        estudadas, esta era a que apresentava os melhores resultados, na qual 
+        haviam menos colisões.<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>linear_probing : string -> int -> int = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: 0(N) <br>
+        <br>
+        Esta função é utilizada quando existem colisões na tabela de hash. Faz 
+        uso da função de hash. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>insere_palavra : string -> int -> int -> int -> unit = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(1) <br>
+        <br>
+        Função auxiliar que insere uma palavra na hash. Se a palavra não existir, 
+        insere-a na hash, se já existir incrementa as ocorrências. Insere também 
+        na hash a(s) linha(s) em que a palavra existe, e a ordem em que a palavra 
+        aparece. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>indexa : string -> string entrada vect = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: 0(N)<br>
+        <br>
+        Esta é a função que preenche a tabela de hash com as palavras do texto. 
+        Cria um canal para o ficheiro. Selecciona as palavras segundo os critérios 
+        do enunciado do trabalho. Insere as palavras na tabela de hash usando 
+        a função anterior, guardando também a linha em que a palavra ocorreu e 
+        a ordem em que a palavra apareceu.</font> <font size="2" face="Courier New, Courier, mono"><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        </font></p>
+      <p align="center"><font size="2" face="Courier New, Courier, mono"><br>
+        <b>Funções de pesquisa<br>
+        ===================</b><br>
+        </font></p>
+      <p align="JUSTIFY"><font size="2" face="Courier New, Courier, mono"><br>
+        </font></p>
+      <p align="JUSTIFY">&nbsp;</p>
+      <p align="JUSTIFY"><font size="2" face="Courier New, Courier, mono"><b>1º 
+        Parte - Pesquisa sobre palavras</b><br>
+        <b>==================================</b><br>
+        <br>
+        <br>
+        </font><font size="2" face="Courier New, Courier, mono"><br>
+        <b>ocorre : string entrada vect -> string -> bool = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(1) <br>
+        <br>
+        Indica se uma palavra existe ou não. Aplica a função de hash a palavra, 
+        se na posição resultante estiver a palavra devolve true, senão devolve 
+        false. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>primeira_ocorrencia : string entrada vect -> string -> int = <fun> 
+        &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: 0(1) <br>
+        <br>
+        Devolve a linha onde se encontra a primeira ocorrência de uma dada palavra. 
+        Aplica a função de hash à palavra para obter a posição da palavra. De 
+        seguida vai à lista de ocorrências e devolve a cabeça da lista. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>ultima_ocorrencia : string entrada vect -> string -> int = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: 0(N) <br>
+        <br>
+        Devolve a linha onde se encontra a última ocorrência de uma dada palavra. 
+        Aplica a função de hash à palavra para obter a posição da palavra. De 
+        seguida vai à lista de ocorrências e devolve o último elemento da lista. 
+        Para fazer isto utiliza a função auxiliar tail.<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>ocorrencias : string entrada vect -> string -> int list = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: 0(1)<br>
+        <br>
+        Devolve uma lista ordenada com número das linhas onde a palavra ocorre. 
+        Como sempre aplica a função de hash à palavra para obter a posição. Vai 
+        ao campo da tabela de hash identificado pela posição e devolve a variável 
+        linhas, que é a lista utilizada para guardar as ocorrências da palavra. 
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>quantas_ocorrencias : string entrada vect -> string -> int = <fun> 
+        &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: 0(1) Devolve o número de vezes que uma palavra ocorre no 
+        texto. Obtém a posição através da função de hash, e devolve a variável 
+        ocorrências que está nessa posição.<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>quantas_palavras : string entrada vect -> int = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: 0(N)<br>
+        <br>
+        Devolve o número de palavras no texto. Precorre a tabela de hash toda, 
+        por cada índice que encontre em que a palavra seja diferente da string 
+        nula soma à variável o valor da variável ocorrências desse índice. No 
+        final devolve essa variável. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>quantas_palavras_distintas : string entrada vect -> int = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(N) <br>
+        <br>
+        Devolve o número de palavras distintas no texto. Precorre a tabela de 
+        hash, por cada índice que encontre em que a palavra seja diferente da 
+        string nula incrementa a variável counter. No final devolve a variável 
+        counter. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>mais_frequente : string entrada vect -> string = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(N)<br>
+        <br>
+        Devolve a palavra com maior número de ocorrências. Coloca a variável ocorre 
+        a zero e a variável mais_freq com o valor de string nula. Depois procorre 
+        a tabela de hash toda, sempre que encontrar uma posição em que o valor 
+        da variável ocorrências seja maior que o valor guardado por ocorre, então 
+        ocorre passa a ter o valor de ocorrências e mais_freq passa a guardar 
+        a palavra correspondente a essa posição.<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        </font><font size="2" face="Courier New, Courier, mono"><b>2º Parte - 
+        Pesquisa sobre palavras<br>
+        ==================================</b><br>
+        <br>
+        <br>
+        <br>
+        Funções auxiliares<br>
+        ==================<br>
+        </font></p>
+      <p align="JUSTIFY"><font size="2" face="Courier New, Courier, mono"> <b>vector_de_lista 
+        : 'a list -> 'a vect = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(N) <br>
+        <br>
+        Função que recebe uma lista de elementos e a converte num vector com os 
+        mesmos elementos. Criada para facilitar o acesso aos elementos. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>ordem_palavra : string entrada vect -> string -> int list = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(1) <br>
+        <br>
+        Função que devolve a lista com a ordem(s) da palavra dada. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>ordem_expressao : string entrada vect -> string list -> int vect vect 
+        = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(N) <br>
+        <br>
+        Devolve um vector contendo os vectores (transformados a partir de listas) 
+        com as ordens das palavras que constituem a expressão. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>linha_expressao : string entrada vect -> string list -> int vect vect 
+        = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(N) <br>
+        <br>
+        Devolve um vector contendo os vectores (transformados a partir de listas) 
+        com as linhas das palavras que constituem a expressão. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>devolve_ocorrencias_expressao : int vect vect -> 'a vect vect -> 'a 
+        list = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(2^N) <br>
+        <br>
+        No entanto atente-se ao facto de que os vectores que são comparados estão 
+        ordenados, o que melhora consideravelmente o desempenho desta função.<br>
+        <br>
+        Devolve uma lista com as linhas em que a expressao ocorre. Se a expressao 
+        não existir, sai com excepção " Invalid_argument "vect_item" ". Esta excepção 
+        é considerada e aproveitada nas funções seguintes. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        Funções de pesquisa<br>
+        ===================<br>
+        <br>
+        <b>ocorrencias_expressao : string entrada vect -> string list -> int list 
+        = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(2^N) <br>
+        <br>
+        Chamando a função devolve_ocorrencias_expressao, devolve a lista das linhas 
+        em que a expressão aparece. Caso a expressão não exista, detecta a excepção 
+        da função auxiliar, devolvendo uma lista vazia. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>ocorre_expressao : string entrada vect -> string list -> bool = <fun> 
+        &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(2^N)<br>
+        <br>
+        Devolve True ou False caso a expressao ocorra ou não no texto. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>primeira_ocorrencia_expressao : string entrada vect -> string list 
+        -> int = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(2^N) <br>
+        <br>
+        Devolve uma lista com a linha da primeira ocorrência da expressão, devolvendo 
+        -1, caso ela não ocorra. <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        </font><font size="2" face="Courier New, Courier, mono"><b>ultima_ocorrencia_expressao 
+        : string entrada vect -> string list -> int = <fun> &lt;fun&gt;</b><br>
+        <br>
+        Complexidade: O(2^N) <br>
+        <br>
+        Devolve uma lista com a linha da última ocorrência da expressão, devolvendo 
+        -1, caso ela não ocorra.<br>
+        <br>
+      </td>
+  </tr>
+</table>
+<hr>
+<p><font size="3" face="Courier New, Courier, mono">Trabalho realizado por:</font></p>
+<p><font face="Courier New, Courier, mono">David Batista:<br>
+  15210@alunos.uevora.pt<br>
+  http://www.alunos.uevora.pt/~l15210</font></p>
+<p><font face="Courier New, Courier, mono">Tiago Bilou:<br>
+  l15243@alunos.uevora.pt<br>
+  http://www.alunos.uevora.pt/~l15243</font></p>
+<p><font face="Courier New, Courier, mono">Daniel Silva:<br>
+  n&ordm; 13554<br>
+  </font><font face="Courier New, Courier, mono">raditzman@yahoo.com<br>
+  </font></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

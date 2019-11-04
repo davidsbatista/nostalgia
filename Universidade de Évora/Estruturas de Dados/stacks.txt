@@ -1,0 +1,13 @@
+type 'a stack = { mutable sp: int; valor: 'a vect };;
+
+let cria x = {sp=0 ; valor=make_vect 20 x };;
+
+let vazio x = x.sp=0;;
+
+let cheio x = x.sp=vect_length x.valor;;
+
+let push x y = x.sp<-(x.sp+1); x.valor.(x.sp)<-y;;
+
+let pop x = x.sp<-(x.sp-1);x;;
+
+let top x = x.valor.(x.sp);;

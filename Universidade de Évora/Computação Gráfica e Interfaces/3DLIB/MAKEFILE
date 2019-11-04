@@ -1,0 +1,10 @@
+option = -oneatxl+r -5r -s -fp5 -zdp -fpi87 -7 -iinclude -zq -w0
+
+3dmath.lib : vector.obj matrix44.obj
+ wlib 3dmath -+vector -+matrix44
+
+vector.obj : vector.c vector.h
+ wcc386 vector.c $option
+
+matrix44.obj : matrix44.c matrix44.h
+ wcc386 matrix44.c $option

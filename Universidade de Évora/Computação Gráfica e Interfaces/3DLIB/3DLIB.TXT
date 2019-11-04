@@ -1,0 +1,8 @@
+=============================
+Sources for vector & matrices
+stuff, usefull to any good 3d
+        engine code.
+
+    by deks@videotron.ca
+http://pages.infinit.net/deks
+=============================
